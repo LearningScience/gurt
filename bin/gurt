@@ -1,0 +1,31 @@
+#!/usr/bin/env node
+
+const main = require('../lib/gurt.js');
+const pack = require('../package.json');
+const prog = require('commander');
+
+prog.usage('[OPTIONS]... <COMMAND> [CHAIN]')
+	.option('-f, --frags <NAME>')
+	.option('-s, --source <PATH>')
+	.option('-t, --target <PATH>')
+	.version(pack.version);
+
+prog.command('build [CHAIN]')
+	.action(chain => {
+		let opts = prog.opts();
+		opts.build = true;
+		opts.chain = chain || 'build';
+		main(opts);
+	});
+
+prog.command('serve [CHAIN]')
+	.action(chain => {
+		let opts = prog.opts();
+		opts.serve = true;
+		opts.chain = chain || 'serve';
+		main(opts);
+	});
+
+prog.on('--help', () => console.log('  See man page for more info...\n'));
+
+prog.parse(process.argv) && !prog.args.length && prog.help();

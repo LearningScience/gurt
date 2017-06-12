@@ -1,0 +1,42 @@
+.TH GURT 1
+
+.SH NAME
+
+gurt - the stream fragment build system
+
+.SH SYNOPSIS
+
+.B gurt
+.RI [ OPTIONS ]...\ < COMMAND >\ [ CHAIN ]
+
+.SH OPTIONS
+
+.TP
+.BI -f,\ --frags\ < NAME >
+Specify the fragments file or module <NAME>. Defaults to 'gurt-frags'. Read as relative path, local npm module, global npm module with decreasing precedence.
+
+.TP
+.BI -s,\ --source\ < PATH >
+Specify the source directory <PATH> relative to the current working directory. Defaults to 'code'. Whole directory content is read into fragment chain.
+
+.TP
+.BI -t,\ --target\ < PATH >
+Specify the target directory <PATH> relative to the current working directory. Defaults to 'dist'. Fragment chain output is written to whole directory.
+
+.SH COMMAND
+
+.TP
+.BI build\ [ CHAIN ]
+Read and build source using fragment [CHAIN] then exit. [CHAIN] defaults to 'build' defined by the fragments file as the default build chain alias.
+
+.TP
+.BI serve\ [ CHAIN ]
+Watch and build source using fragment [CHAIN] then serve. [CHAIN] defaults to 'serve' defined by the fragments file as the default serve chain alias.
+
+.SH CHAIN
+
+A fragment CHAIN is a simple way of declaring a build pipeline. It specifies which fragments to use in what order, as a list of dot delimited names e.g:
+
+.B gurt build Pre-Process.Concat.Post-Process
+
+Available fragments depend on which module has been loaded. Fragment modules specify default build and serve chains allowing an explicit CHAIN to be omitted.
