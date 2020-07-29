@@ -17,18 +17,18 @@
 	],
 	"repository": "github:learningscience/gurt",
 	"dependencies": {
-		"commander": "^2",
-		"vinyl-fs": "^2",
-		"chokidar": "^1",
+		"commander": "^6",
+		"vinyl-fs": "^3",
+		"chokidar": "^3",
 		"bower-files": "^4",
 		"lazypipe": "^1",
-		"gulp-filter": "^5",
-		"rimraf": "^2",
+		"gulp-filter": "^6",
+		"rimraf": "^3",
 		"gulp-plumber": "^1",
 		"browser-sync": "^2",
 		"optional": "^0",
 		"eazy-logger": "^3",
-		"cli-cursor": "^2",
+		"cli-cursor": "^3",
 		"pretty-hrtime": "^1"
 	}
 }
